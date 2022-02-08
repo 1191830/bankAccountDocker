@@ -7,7 +7,7 @@ namespace ctesp2022_final_gg
         /// <summary>
         /// Cliente ID
         /// </summary>
-        public int ClientId { get; set; }
+        public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
         public string Morada { get; set; }
         public int Contacto { get; set; }

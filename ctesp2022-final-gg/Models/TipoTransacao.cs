@@ -7,7 +7,7 @@ namespace ctesp2022_final_gg
         /// <summary>
         /// tipoTransacao ID
         /// </summary>
-        public int TipoId { get; set; }
+        public int TipoTransacaoId { get; set; }
         public string NomeTipoTransacao { get; set; }
 
 

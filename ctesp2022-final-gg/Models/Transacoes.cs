@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ctesp2022_final_gg
 {
-    public class Transacoes
+    public class Transacao
     {
         /// <summary>
         /// ContaBancaria ID

@@ -8,7 +8,7 @@ namespace ctesp2022_final_gg
         /// <summary>
         /// ContaBancaria ID
         /// </summary>
-        public int ContaId { get; set; }
+        public int ContaBancariaId { get; set; }
         public int NumeroConta { get; set; }
         public int IBAN { get; set; }
         public double SaldoCorrente { get; set; }
@@ -28,7 +28,7 @@ namespace ctesp2022_final_gg
         /// <summary>
         /// Lista das transações
         /// </summary>
-        public List<Transacoes> Transacoes { get; set; }
+        public List<Transacao> Transacoes { get; set; }
 
     }
 }
