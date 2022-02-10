@@ -10,8 +10,8 @@ using ctesp2022_final_gg.Database;
 namespace ctesp2022_final_gg.Migrations
 {
     [DbContext(typeof(BankContext))]
-    [Migration("20220208155443_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220210131808_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,10 +32,12 @@ namespace ctesp2022_final_gg.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Morada")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("NomeCliente")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ClienteId");
 
@@ -49,14 +51,12 @@ namespace ctesp2022_final_gg.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ClientId")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IBAN")
-                        .HasColumnType("int");
+                    b.Property<string>("IBAN")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("NumeroConta")
                         .HasColumnType("int");
@@ -79,7 +79,9 @@ namespace ctesp2022_final_gg.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NomeTipoTransacao")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("TipoTransacaoId");
 
@@ -93,19 +95,13 @@ namespace ctesp2022_final_gg.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ContaBancariaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ContaId")
+                    b.Property<int>("ContaBancariaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Dia")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TipoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TipoTransacaoId")
+                    b.Property<int>("TipoTransacaoId")
                         .HasColumnType("int");
 
                     b.Property<double>("Valor")
@@ -124,7 +120,9 @@ namespace ctesp2022_final_gg.Migrations
                 {
                     b.HasOne("ctesp2022_final_gg.Cliente", "Cliente")
                         .WithMany("ContaBancarias")
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
                 });
@@ -133,11 +131,15 @@ namespace ctesp2022_final_gg.Migrations
                 {
                     b.HasOne("ctesp2022_final_gg.ContaBancaria", "ContaBancaria")
                         .WithMany("Transacoes")
-                        .HasForeignKey("ContaBancariaId");
+                        .HasForeignKey("ContaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ctesp2022_final_gg.TipoTransacao", "TipoTransacao")
                         .WithMany()
-                        .HasForeignKey("TipoTransacaoId");
+                        .HasForeignKey("TipoTransacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ContaBancaria");
 

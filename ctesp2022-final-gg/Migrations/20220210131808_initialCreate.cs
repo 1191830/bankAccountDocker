@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ctesp2022_final_gg.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace ctesp2022_final_gg.Migrations
                 {
                     ClienteId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeCliente = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Morada = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeCliente = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Morada = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Contacto = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -28,7 +28,7 @@ namespace ctesp2022_final_gg.Migrations
                 {
                     TipoTransacaoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeTipoTransacao = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    NomeTipoTransacao = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,10 +42,9 @@ namespace ctesp2022_final_gg.Migrations
                     ContaBancariaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NumeroConta = table.Column<int>(type: "int", nullable: false),
-                    IBAN = table.Column<int>(type: "int", nullable: false),
+                    IBAN = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     SaldoCorrente = table.Column<double>(type: "float", nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: true)
+                    ClienteId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +54,7 @@ namespace ctesp2022_final_gg.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "ClienteId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,10 +65,8 @@ namespace ctesp2022_final_gg.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Dia = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Valor = table.Column<double>(type: "float", nullable: false),
-                    ContaId = table.Column<int>(type: "int", nullable: false),
-                    ContaBancariaId = table.Column<int>(type: "int", nullable: true),
-                    TipoId = table.Column<int>(type: "int", nullable: false),
-                    TipoTransacaoId = table.Column<int>(type: "int", nullable: true)
+                    ContaBancariaId = table.Column<int>(type: "int", nullable: false),
+                    TipoTransacaoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,13 +76,13 @@ namespace ctesp2022_final_gg.Migrations
                         column: x => x.ContaBancariaId,
                         principalTable: "ContaBancaria",
                         principalColumn: "ContaBancariaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transacao_TipoTransacao_TipoTransacaoId",
                         column: x => x.TipoTransacaoId,
                         principalTable: "TipoTransacao",
                         principalColumn: "TipoTransacaoId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ctesp2022_final_gg.Database.Configurations;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,16 @@ namespace ctesp2022_final_gg.Database
         {
             optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=Banco;User Id=sa;Password=MsSqlPwd123!!!");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new TipoTransacaoConfiguration());
+            modelBuilder.ApplyConfiguration(new ClienteConfiguration());
+            modelBuilder.ApplyConfiguration(new ContaBancariaConfiguration());
+            modelBuilder.ApplyConfiguration(new TransacaoConfiguration());
+        }
+
     }
+
+
 }
