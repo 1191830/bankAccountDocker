@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ctesp2022_final_gg
 {
-    public class Transacoes
+    public class Transacao
     {
         /// <summary>
         /// ContaBancaria ID
@@ -17,7 +17,7 @@ namespace ctesp2022_final_gg
         /// <summary>
         /// ID da conta bancaria
         /// </summary>
-        public int ContaId { get; set; }
+        public int ContaBancariaId { get; set; }
 
         /// <summary>
         /// Conta Bancaria
@@ -27,7 +27,7 @@ namespace ctesp2022_final_gg
         /// <summary>
         /// ID da transacao
         /// </summary>
-        public int TipoId { get; set; }
+        public int TipoTransacaoId { get; set; }
 
         /// <summary>
         /// Tipo de transacao
