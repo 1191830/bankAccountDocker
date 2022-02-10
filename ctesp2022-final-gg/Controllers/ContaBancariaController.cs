@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using ctesp2022_final_gg.Database;
 
 namespace ctesp2022_final_gg.Controllers
 {
@@ -18,11 +19,11 @@ namespace ctesp2022_final_gg.Controllers
         
 
         private readonly ILogger<ContaBancariaController> _logger;
-     //   private CodeContext db;
+        private BankContext db;
 
         public ContaBancariaController(ILogger<ContaBancariaController> logger)
         {
-       //     db = new CodeContext();
+            db = new BankContext();
             _logger = logger;
         }
 
@@ -33,10 +34,9 @@ namespace ctesp2022_final_gg.Controllers
         [HttpGet]
         public IEnumerable<ContaBancaria> Get()
         {
-            // List<ContaBancaria> result = db.ContaBancaria.ToList();
-            List<ContaBancaria> list = new List<ContaBancaria>();
-            return list;
-         //  return result;
+            List<ContaBancaria> result = db.ContaBancaria.ToList();
+            return result;
+
         }
 
         /// <summary>
@@ -46,9 +46,8 @@ namespace ctesp2022_final_gg.Controllers
         [HttpGet("{Id}")]
         public ContaBancaria Get(int Id)
         {
-            //   var result = db.ContaBancaria.Where(x => x.ContaId == Id).FirstOrDefault();
-            return new ContaBancaria();
-           // return result;
+            var result = db.ContaBancaria.Where(x => x.ContaBancariaId == Id).FirstOrDefault();
+            return result;
         }
 
         /// <summary>
@@ -57,10 +56,11 @@ namespace ctesp2022_final_gg.Controllers
         [HttpPost]
         public IActionResult Create(ContaBancaria contaBancaria)
         {
-          //  db.ContaBancaria.Add(contaBancaria);
-          //  db.SaveChanges();
-            // This code will save the ContaBancaria and return a result
-            return CreatedAtAction(nameof(Create), new { id = contaBancaria.ContaId }, contaBancaria);
+            db.ContaBancaria.Add(contaBancaria);
+            db.SaveChanges();
+            // Vai gravar a conta e retornar um resultado
+            return CreatedAtAction(nameof(Create), new { id = contaBancaria.ContaBancariaId }, contaBancaria);
+
         }
 
 
