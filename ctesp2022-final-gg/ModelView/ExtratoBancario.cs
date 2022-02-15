@@ -10,9 +10,9 @@ namespace ctesp2022_final_gg.ModelView
         /// <summary>
         /// Model View extract account
         /// </summary>
-        private double TotalCredito { get; set; }
-        private double TotalDebitos { get; set; }
-        private List<Object> Historico { get; set; }
+        public double TotalCredito { get; set; }
+        public double TotalDebito { get; set; }
+        public List<SaldoDiario> Historico { get; set; }
 
     }
 }
