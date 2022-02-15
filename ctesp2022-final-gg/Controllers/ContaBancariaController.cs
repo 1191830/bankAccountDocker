@@ -28,18 +28,6 @@ namespace ctesp2022_final_gg.Controllers
         }
 
         /// <summary>
-        /// GET ContaBancaria return   in the buildings list
-        /// </summary>
-        /// <returns>All the ContaBancaria in the ContaBancaria list</returns>
-        [HttpGet]
-        public IEnumerable<ContaBancaria> Get()
-        {
-            List<ContaBancaria> result = db.ContaBancaria.ToList();
-            return result;
-
-        }
-
-        /// <summary>
         /// GET ContaBancaria by ID return ContaBancaria with ID given
         /// </summary>
         /// <returns>A ContaBancaria with given Id</returns>
@@ -51,16 +39,23 @@ namespace ctesp2022_final_gg.Controllers
         }
 
         /// <summary>
-        /// CREATE building creates a new ContaBancaria assigning new ID and adding to the ContaBancaria list
+        /// Create a new Transaction
         /// </summary>
         [HttpPost]
-        public IActionResult Create(ContaBancaria contaBancaria)
+        public IActionResult Create(Transacao transacao)
         {
-            db.ContaBancaria.Add(contaBancaria);
+            db.Transacao.Add(transacao);
             db.SaveChanges();
             // Vai gravar a conta e retornar um resultado
-            return CreatedAtAction(nameof(Create), new { id = contaBancaria.ContaBancariaId }, contaBancaria);
-
+            return CreatedAtAction(
+                nameof(Create), 
+                new { 
+                contraBancariaId = transacao.ContaBancariaId,
+                dia = DateTime.Now,
+                valor = transacao.Valor,
+                tipoTransacaoId = transacao.TipoTransacaoId
+                },
+                transacao);
         }
 
 
@@ -69,11 +64,10 @@ namespace ctesp2022_final_gg.Controllers
         /// </summary>
         /// <returns>A ContaBancaria with given Id</returns>
         [HttpGet("{Id}/Transacao")]
-        public IEnumerable<ContaBancaria> GetTransacao(int Id)
+        public IEnumerable<Transacao> GetTransacao(int Id)
         {
-            //   var result = db.ContaBancaria.Where(x => x.ContaId == Id).FirstOrDefault();
-            return new List<ContaBancaria>(); 
-            // return result;
+            List<Transacao> result = db.Transacao.Where(x => x.ContaBancariaId == Id).ToList();
+            return result;
         }
 
 

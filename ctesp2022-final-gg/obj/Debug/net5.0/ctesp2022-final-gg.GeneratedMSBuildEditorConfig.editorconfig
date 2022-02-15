@@ -7,4 +7,8 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = ctesp2022_final_gg
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\ctesp2022-final-gg\
+=======
+build_property.ProjectDir = C:\trabalho\pcoelho\Desktop\PESSOAL\DOS\final\ctesp2022-final-gg\ctesp2022-final-gg\
+>>>>>>> 312773c52362ff4969fe9d1df88d0fc3d8ab366b
