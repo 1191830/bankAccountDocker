@@ -49,8 +49,7 @@ Thumbs.db
 *.wmv
 
 #Folders to ignore
-/ctesp2022-final-gg/bin/
-/ctesp2022-final-gg/obj/
+
 /ctesp2022-final-gg/.vagrant
 /ctesp2022-final-gg/.vs
 /ctesp2022-final-gg/.vagrant
