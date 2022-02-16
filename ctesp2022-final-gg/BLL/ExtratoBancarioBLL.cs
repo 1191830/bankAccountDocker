@@ -7,10 +7,15 @@ namespace ctesp2022_final_gg.BLL
 {
     public class ExtratoBancarioBLL
     {
-        public ExtratoBancario extratoFinal(ContaBancaria contaBancaria)
+        public static ExtratoBancario extratoFinal(ContaBancaria contaBancaria)
         {
 
-            // saldo inicial da conta bancária
+
+
+
+
+
+            Console.WriteLine("------------------Extracto------------------------------");
             double saldoBalanco = contaBancaria.SaldoCorrente;
 
             //inicializar saldo totais
@@ -18,35 +23,37 @@ namespace ctesp2022_final_gg.BLL
             double totalDebito = 0;
 
 
+            // Novo Extrato bancario
+            ExtratoBancario extrato = new ExtratoBancario();
+            extrato.Historico = new List<SaldoDiario>();
+
+
+            if (!contaBancaria.Transacoes.Any())
+            {
+
+                Console.Write("vazio");
+
+            }
+
+            //ultimo dia ou primeiro inversamente
+            DateTime dia = contaBancaria.Transacoes.LastOrDefault().Dia.Date;
+
+
             //inilicializar saldos diarios
             double totalCreditoDiario = 0;
             double totalDebitoDiario = 0;
 
 
-            // Novo Extrato bancario
-            ExtratoBancario extrato = new ExtratoBancario();
-            extrato.Historico = new List<SaldoDiario>();
-
-            // se não houver transações retorna nulo
-            if (!contaBancaria.Transacoes.Any()) {
-
-                return null;
-            }
-
-            //ultimo dia ou primeiro inversamente
-            DateTime dia = contaBancaria.Transacoes.LastOrDefault().Dia;
 
 
-
-            
 
             // Método
-            foreach (var transacao in contaBancaria.Transacoes.OrderByDescending(x => x.Dia))
+            foreach (var transacao in contaBancaria.Transacoes.OrderByDescending(x => x.Dia.Date))
             {
 
 
                 //mudança de data
-                if (!dia.Equals(transacao.Dia))
+                if (!dia.Equals(transacao.Dia.Date))
                 {
 
 
@@ -57,14 +64,14 @@ namespace ctesp2022_final_gg.BLL
                     Console.WriteLine("total credito diário: " + totalCreditoDiario);
                     Console.WriteLine("total balanço: " + saldoBalanco);
                     SaldoDiario saldoDiario = new SaldoDiario();
-                    saldoDiario.DataSaldoDiario = dia;
+                    saldoDiario.DataSaldoDiario = dia.Date;
                     saldoDiario.ValorDoSaldoDiario = saldoBalanco;
                     extrato.Historico.Add(saldoDiario);
                     Console.WriteLine("----------------------------------------------");
                     //repor os saldos débito/créditos diários e nova data
                     totalDebitoDiario = 0;
                     totalCreditoDiario = 0;
-                    dia = transacao.Dia;
+                    dia = transacao.Dia.Date;
                 }
 
                 if (transacao.TipoTransacaoId == TipoTransacao.Credito)
@@ -86,14 +93,14 @@ namespace ctesp2022_final_gg.BLL
             }
 
 
-            //calculo do saldo no fim
+            //calculo do novo saldo
             saldoBalanco = saldoBalanco - totalCreditoDiario - totalDebitoDiario;
             Console.WriteLine(dia);
             Console.WriteLine("total debito diário: " + totalDebitoDiario);
             Console.WriteLine("total credito diário: " + totalCreditoDiario);
             Console.WriteLine("total balanço: " + saldoBalanco);
             SaldoDiario saldoDiarioFinal = new SaldoDiario();
-            saldoDiarioFinal.DataSaldoDiario = dia;
+            saldoDiarioFinal.DataSaldoDiario = dia.Date;
             saldoDiarioFinal.ValorDoSaldoDiario = saldoBalanco;
             extrato.Historico.Add(saldoDiarioFinal);
 
