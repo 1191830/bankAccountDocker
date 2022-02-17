@@ -70,7 +70,5 @@ namespace ctesp2022_final_gg.Controllers
             return result;
         }
 
-
-
     }
 }
