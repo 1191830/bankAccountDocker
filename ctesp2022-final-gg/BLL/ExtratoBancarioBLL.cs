@@ -7,123 +7,100 @@ namespace ctesp2022_final_gg.BLL
 {
     public class ExtratoBancarioBLL
     {
-        private double saldoBalanco;
-
-        private double totalCredito;
-        private double totalDebito;
-
-
-        //inilicializar saldos diarios
-        private double totalCreditoDiario;
-        private double totalDebitoDiario;
-
-        public ExtratoBancario extratoFinal(ContaBancaria contaBancaria)
+        public static ExtratoBancario extratoFinal(ContaBancaria contaBancaria)
         {
-            // se não houver transações retorna nulo
-            if (!contaBancaria.Transacoes.Any())
-            {
-                return null;
-            }
 
-            // saldo inicial da conta bancária
-           saldoBalanco = contaBancaria.SaldoCorrente;
+            double saldoBalanco = contaBancaria.SaldoCorrente;
+
+            //inicializar saldo totais
+            double totalCredito = 0;
+            double totalDebito = 0;
 
 
             // Novo Extrato bancario
             ExtratoBancario extrato = new ExtratoBancario();
             extrato.Historico = new List<SaldoDiario>();
 
-            //ultimo dia ou primeiro inversamente
-            DateTime dia = contaBancaria.Transacoes.LastOrDefault().Dia;
 
-            // Método
-            foreach (var transacao in contaBancaria.Transacoes.OrderByDescending(x => x.Dia))
+            if (!contaBancaria.Transacoes.Any())
             {
 
+                Console.Write("vazio");
+
+            }
+
+            //ultimo dia ou primeiro inversamente
+            DateTime dia = contaBancaria.Transacoes.LastOrDefault().Dia.Date;
+
+
+            //inilicializar saldos diarios
+            double totalCreditoDiario = 0;
+            double totalDebitoDiario = 0;
+
+            // Método
+            foreach (var transacao in contaBancaria.Transacoes.OrderByDescending(x => x.Dia.Date))
+            {
+
+
                 //mudança de data
-                if (!dia.Equals(transacao.Dia))
+                if (!dia.Equals(transacao.Dia.Date))
                 {
 
-                    extrato.Historico.Add(
-                        saldoDiarioTransacao(dia, calculoSaldoDiario(
-                             saldoBalanco, totalCreditoDiario, totalDebitoDiario
-                           )
-                        )
-                    );
-
+                    //calculo do novo saldo
+                    saldoBalanco = CalculoSaldoDiario(saldoBalanco, totalCreditoDiario, totalDebitoDiario);
+                    
+                    extrato.Historico.Add(SaldoDiarioTransacao(dia, saldoBalanco));
+                  
                     //repor os saldos débito/créditos diários e nova data
                     totalDebitoDiario = 0;
                     totalCreditoDiario = 0;
-                    
-                    dia = transacao.Dia;
+                    dia = transacao.Dia.Date;
                 }
 
-                somaTotalDiarioDebitoCredito(transacao);
-                somaTotalDebitoCredito(transacao);
+                if (transacao.TipoTransacaoId == TipoTransacao.Credito)
+                {
+                    //total Crédito global
+                    totalCredito += transacao.Valor;
+                    //total diário
+                    totalCreditoDiario += transacao.Valor;
+                }
+                else
+                {
+                    // total de débito global
+                    totalDebito += transacao.Valor;
+                    //total débito diário
+                    totalDebitoDiario += transacao.Valor;
+                }
+
 
             }
 
 
-            //calculo do saldo no fim
+            //calculo do novo saldo
+            saldoBalanco = CalculoSaldoDiario(saldoBalanco ,totalCreditoDiario,totalDebitoDiario);
+            extrato.Historico.Add(SaldoDiarioTransacao(dia,saldoBalanco));
 
-
-            extrato.Historico.Add(
-                    saldoDiarioTransacao(dia, calculoSaldoDiario(saldoBalanco, totalCreditoDiario, totalDebitoDiario
-                        )
-                    )
-                );
 
             extrato.TotalCredito = totalCredito;
             extrato.TotalDebito = totalDebito;
-            
+           
             return extrato;
 
 
         }
-
-        public SaldoDiario saldoDiarioTransacao(DateTime dia, double saldoBalanco)
+        public static SaldoDiario SaldoDiarioTransacao(DateTime dia, double saldoBalanco)
         {
             SaldoDiario saldoDiarioFinal = new SaldoDiario();
-            saldoDiarioFinal.DataSaldoDiario = dia;
+            saldoDiarioFinal.DataSaldoDiario = dia.Date;
             saldoDiarioFinal.ValorDoSaldoDiario = saldoBalanco;
             return saldoDiarioFinal;
         }
 
-        public double calculoSaldoDiario(double saldoBalanco,double totalCreditoDiario,double totalDebitoDiario)
+        public static double CalculoSaldoDiario(double saldoBalanco, double totalCreditoDiario, double totalDebitoDiario)
         {
             return saldoBalanco - totalCreditoDiario - totalDebitoDiario;
         }
 
-        public void somaTotalDiarioDebitoCredito(Transacao transacao)
-        {
-
-            if (transacao.TipoTransacaoId == TipoTransacao.Credito)
-            {
-                //total diário
-                totalCreditoDiario += transacao.Valor;
-            }
-            else
-            {
-                //total débito diário
-                totalDebitoDiario += transacao.Valor;
-            }
-        }
-
-        public void somaTotalDebitoCredito(Transacao transacao)
-        {
-            if (transacao.TipoTransacaoId == TipoTransacao.Credito)
-            {
-                //total Crédito global
-                totalCredito += transacao.Valor;
-            }
-            else
-            {
-                // total de débito global
-                totalDebito += transacao.Valor;
-            }
-
-        }
     }
 
-    }
-
+}
