@@ -1,0 +1,6 @@
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\bin\Debug\net5.0\CoverletSourceRootsMapping
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.csproj.AssemblyReference.cache
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.AssemblyInfoInputs.cache
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.AssemblyInfo.cs
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.csproj.CoreCompileInputs.cache
