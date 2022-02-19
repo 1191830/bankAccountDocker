@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yPEp1lMbjw837JrrWxC/n6/H2nQxiaXylbP7GtC2FfMDctMOJdEmJA3OkHlIJ5APMRNkt8gvDhqcfg6GSv9dWg==",
+  "dgSpecHash": "NmYHlqozXNkEunzQxuiASr3K9SystgR55u8r3oTkyTbtEBVSQ0TukUtyhfDK0hlAgbykn3OFyhepR51wgvkiQg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bruno\\.nuget\\packages\\fluentassertions\\5.0.0\\fluentassertions.5.0.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

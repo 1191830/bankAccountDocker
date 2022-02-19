@@ -181,3 +181,5 @@ C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-fi
 C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\ctesp2022-final-gg\obj\Debug\net5.0\ctesp2022-final-gg.pdb
 C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\ctesp2022-final-gg\obj\Debug\net5.0\ctesp2022-final-gg.genruntimeconfig.cache
 C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\ctesp2022-final-gg\bin\debug\net5.0\ctesp2022-final-gg.xml
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\ctesp2022-final-gg\bin\Debug\net5.0\FluentAssertions.dll
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\ctesp2022-final-gg\obj\Debug\net5.0\ctesp2022-final-gg.csproj.CopyComplete

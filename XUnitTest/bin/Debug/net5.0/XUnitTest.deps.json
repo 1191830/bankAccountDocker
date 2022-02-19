@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "XUnitTest/1.0.0": {
         "dependencies": {
+          "FluentAssertions": "5.0.0",
           "Microsoft.NET.Test.Sdk": "16.9.4",
           "coverlet.collector": "3.0.2",
           "ctesp2022-final-gg": "1.0.0",
@@ -19,6 +20,19 @@
         }
       },
       "coverlet.collector/3.0.2": {},
+      "FluentAssertions/5.0.0": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.7.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentAssertions.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
       "Microsoft.CodeCoverage/16.9.4": {
         "runtime": {
           "lib/netcoreapp1.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
@@ -1632,6 +1646,7 @@
       "xunit.runner.visualstudio/2.4.3": {},
       "ctesp2022-final-gg/1.0.0": {
         "dependencies": {
+          "FluentAssertions": "5.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.12",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.11.1",
           "Swashbuckle.AspNetCore": "5.6.3"
@@ -1654,6 +1669,13 @@
       "sha512": "sha512-iBvPAIDaI7j/iMx/DzCGCJ3rdiOmel9VINEfaTiBv/NKIGHOP4X3hqc6Q1wgMtArEshlhXexQknP17SK4vXb1w==",
       "path": "coverlet.collector/3.0.2",
       "hashPath": "coverlet.collector.3.0.2.nupkg.sha512"
+    },
+    "FluentAssertions/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-d1HxcAZAcb8dNjPUChLH4VYFUfO8xeyYzKJH3HzcokcW1XnYm/q0noHFWzGvhbotEJAoiNPEaK/BdmftYFRmpg==",
+      "path": "fluentassertions/5.0.0",
+      "hashPath": "fluentassertions.5.0.0.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/16.9.4": {
       "type": "package",

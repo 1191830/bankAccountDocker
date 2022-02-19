@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "IpOvacEmtt0qKTVAfn1eMVwcq7PLJhbMXLcQjnJujv5hZRjQL45ooUwoEk9uXynF044iY5vY2lpKvOhfAHwEJQ==",
+  "dgSpecHash": "yWseaEgAiPcrqv1NKZrdb5WwuXdovWu+Nfax/I2CcQnAbunn1dtJwih0RdB2D4ayNAXX97PL77tQfJoRUq1M0w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\XUnitTest\\XUnitTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bruno\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
+    "C:\\Users\\Bruno\\.nuget\\packages\\fluentassertions\\5.0.0\\fluentassertions.5.0.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Bruno\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

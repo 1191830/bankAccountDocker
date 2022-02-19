@@ -141,3 +141,4 @@ C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-fi
 C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\ref\XUnitTest.dll
 C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.pdb
 C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\obj\Debug\net5.0\XUnitTest.genruntimeconfig.cache
+C:\Users\Bruno\OneDrive\Ambiente de Trabalho\ISEP\DOS\Projeto final\ctesp2022-final-gg\XUnitTest\bin\Debug\net5.0\FluentAssertions.dll

@@ -4,6 +4,7 @@ using ctesp2022_final_gg;
 using ctesp2022_final_gg.BLL;
 using System.Collections.Generic;
 using ctesp2022_final_gg.ModelView;
+using FluentAssertions;
 
 namespace XunitTest
 {
@@ -121,7 +122,7 @@ namespace XunitTest
 
 
         [Fact]
-        public void ExtratoFinalTest()
+        public void ExtratoFinal_ShouldReturnTrue()
         {
             SaldoDiarios.Add(saldoDiario1);
             SaldoDiarios.Add(saldoDiario2);
@@ -130,15 +131,13 @@ namespace XunitTest
             extrato.Historico = SaldoDiarios;
             extrato.TotalCredito = 120;
             extrato.TotalDebito = -90;
-            
-            Assert.Equal(extrato, ExtratoBancarioBLL.extratoFinal(contaBancaria));
+
+            extrato.Should().BeEquivalentTo(ExtratoBancarioBLL.extratoFinal(contaBancaria));
         }
-        
 
         [Fact]
         public void CalculoSaldoDiarioTest_ShouldReturnTrue()
         {
-           // ExtratoBancarioBLL extratoBancarioBLL = new ExtratoBancarioBLL();
             double expected = 0;
             double result = ExtratoBancarioBLL.CalculoSaldoDiario(40, 20, 20);
             Assert.Equal(expected, result);
@@ -147,7 +146,6 @@ namespace XunitTest
         [Fact]
         public void CalculoSaldoDiarioTest_ShouldReturnFalse()
         {
-            //ExtratoBancarioBLL extratoBancarioBLL = new ExtratoBancarioBLL();
             double expected = 0;
             double result = ExtratoBancarioBLL.CalculoSaldoDiario(50, 20, 20);
             Assert.NotEqual(expected, result);
