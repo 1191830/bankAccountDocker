@@ -40,6 +40,13 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+<<<<<<< HEAD
+=======
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+>>>>>>> feature/#010-001-Unit-Test
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.12, )"

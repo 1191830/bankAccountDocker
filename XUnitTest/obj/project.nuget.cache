@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "3ONbHhMeg28AnHH5oiUbQ+1cT3byZwscxsTUxdi/hbIPnIR6/oIUKg8F3yKBzlr4zFG5bBG0tQjS8F7G3UzQhg==",
+=======
+  "dgSpecHash": "yWseaEgAiPcrqv1NKZrdb5WwuXdovWu+Nfax/I2CcQnAbunn1dtJwih0RdB2D4ayNAXX97PL77tQfJoRUq1M0w==",
+>>>>>>> feature/#010-001-Unit-Test
   "success": true,
   "projectFilePath": "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\XUnitTest\\XUnitTest.csproj",
   "expectedPackageFiles": [
