@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ctesp2022-final-gg</name>
+    </assembly>
+    <members>
+        <member name="T:ctesp2022_final_gg.Controllers.ContaBancariaController">
+            <summary>
+            ContaBancaria Controller responsible for GET/POST/GETTRANSACTION Operations
+            </summary>
+        </member>
+        <member name="M:ctesp2022_final_gg.Controllers.ContaBancariaController.Get(System.Int32)">
+            <summary>
+            GET ContaBancaria by ID return ContaBancaria with ID given
+            </summary>
+            <returns>A ContaBancaria with given Id</returns>
+        </member>
+        <member name="M:ctesp2022_final_gg.Controllers.ContaBancariaController.Create(ctesp2022_final_gg.Domain.PostTransacao)">
+            <summary>
+            POST Create a new Transaction
+            </summary>
+        </member>
+        <member name="M:ctesp2022_final_gg.Controllers.ContaBancariaController.GetTransacao(System.Int32)">
+            <summary>
+            GET ContaBancaria/Transacao by ID return ContaBancaria with ID given
+            </summary>
+            <returns>A ContaBancaria with given Id</returns>
+        </member>
+        <member name="P:ctesp2022_final_gg.Cliente.ClienteId">
+            <summary>
+            Cliente ID
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.Cliente.ContaBancarias">
+            <summary>
+            Lista da Contas Bancarias do cliente
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.ContaBancaria.ContaBancariaId">
+            <summary>
+            ContaBancaria ID
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.ContaBancaria.ClienteId">
+            <summary>
+            ID do cliente da conta bancaria
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.ContaBancaria.Cliente">
+            <summary>
+            Cliente da conta bancaria
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.ContaBancaria.Transacoes">
+            <summary>
+            Lista das transações
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.TipoTransacao.TipoTransacaoId">
+            <summary>
+            tipoTransacao ID
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.Transacao.TransacaoId">
+            <summary>
+            ContaBancaria ID
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.Transacao.ContaBancariaId">
+            <summary>
+            ID da conta bancaria
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.Transacao.ContaBancaria">
+            <summary>
+            Conta Bancaria
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.Transacao.TipoTransacaoId">
+            <summary>
+            ID da transacao
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.Transacao.TipoTransacao">
+            <summary>
+            Tipo de transacao
+            </summary>
+        </member>
+        <member name="P:ctesp2022_final_gg.ModelView.ExtratoBancario.TotalCredito">
+            <summary>
+            Model View extract account
+            </summary>
+        </member>
+    </members>
+</doc>
