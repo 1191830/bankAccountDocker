@@ -19,6 +19,8 @@ services:
       dockerfile: ctesp2022-final-gg/Docker/PROD/API/Dockerfile
     hostname: api
     container_name: api
+    ports:
+      - 8050:80
     depends_on: 
       - db
   
