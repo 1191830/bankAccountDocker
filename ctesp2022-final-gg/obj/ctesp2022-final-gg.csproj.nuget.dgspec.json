@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj": {}
+    "D:\\Isep-2semestre\\DOS\\projeto-clone\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj": {
+    "D:\\Isep-2semestre\\DOS\\projeto-clone\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj",
+        "projectUniqueName": "D:\\Isep-2semestre\\DOS\\projeto-clone\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj",
         "projectName": "ctesp2022-final-gg",
-        "projectPath": "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj",
-        "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruno\\OneDrive\\Ambiente de Trabalho\\ISEP\\DOS\\Projeto final\\ctesp2022-final-gg\\ctesp2022-final-gg\\obj\\",
+        "projectPath": "D:\\Isep-2semestre\\DOS\\projeto-clone\\ctesp2022-final-gg\\ctesp2022-final-gg.csproj",
+        "packagesPath": "C:\\Users\\nelso\\.nuget\\packages\\",
+        "outputPath": "D:\\Isep-2semestre\\DOS\\projeto-clone\\ctesp2022-final-gg\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nelso\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,10 +40,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "FluentAssertions": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.12, )"
@@ -53,6 +49,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.12, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.9.4, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
