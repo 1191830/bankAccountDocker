@@ -1,0 +1,82 @@
+version: '3.5'
+
+services:
+
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts
+    privileged: true
+    build: ./jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - sonarnet
+    ports:
+      - '8080:8080'
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
+  
+  sonar:
+    image: sonarqube:lts
+    container_name: sonar
+    privileged: true
+    depends_on:
+      - db
+    volumes:
+      - sonarqube_conf:/opt/sonarqube/conf
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarquebe/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - sonarnet
+    ports:
+      - '9000:9000'
+    environment:
+      - sonar.jdbc.username=sonar
+      - sonar.jdbc.password=sonar
+      - sonar.jdbc.url=jdbc:postgresql://db:5432/sonar
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - "ES_JAVA_HOME=/opt/java/openjdk"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 3G
+
+  db:
+    image: postgres
+    container_name: db
+    networks:
+      - sonarnet
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=sonar
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+networks:
+  sonarnet:
+    driver: bridge
+
+volumes:
+  jenkins_home:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+  sonarqube_bundled-plugins:
+  postgresql:
+  postgresql_data:
