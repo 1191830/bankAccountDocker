@@ -16,7 +16,7 @@ namespace ctesp2022_final_gg.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=Banco;User Id=sa;Password=MsSqlPwd123!!!");
+            optionsBuilder.UseSqlServer(@"Server=localhost,1433;Database=Banco;User Id=sa;Password=password123!");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

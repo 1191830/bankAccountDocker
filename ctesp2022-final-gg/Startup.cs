@@ -31,30 +31,30 @@ namespace ctesp2022_final_gg
 
             services.AddControllers();
             _ = services.AddSwaggerGen(c =>
-              {
-                  c.SwaggerDoc("v1", new OpenApiInfo
-                  {
-                      Version = "v1",
-                      Title = "Final Project Api",
-                      Description = "Group G Final Project API",
-                      TermsOfService = new Uri("https://example.com/terms"),
-                      Contact = new OpenApiContact
-                      {
-                          Name = "Group G",
-                          Email = string.Empty,
-                          Url = new Uri("https://@bitbucket.org/pcoelho_1050049/ctesp2022-final-gg/src/master/")
-                      },
-                      License = new OpenApiLicense
-                      {
-                          Name = "License number 1",
-                          Url = new Uri("https://@bitbucket.org/pcoelho_1050049/ctesp2022-final-gg/src/master/"),
-                      }
-                  });
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Final Project Api",
+                    Description = "Group G Final Project API",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Group G",
+                        Email = string.Empty,
+                        Url = new Uri("https://@bitbucket.org/pcoelho_1050049/ctesp2022-final-gg/src/master/")
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "License number 1",
+                        Url = new Uri("https://@bitbucket.org/pcoelho_1050049/ctesp2022-final-gg/src/master/"),
+                    }
+                });
 
-                  var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                  var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                  c.IncludeXmlComments(xmlPath);
-              });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

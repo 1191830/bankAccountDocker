@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    	stages {
+    		stage('Checkout'){
+    			steps{
+    			    git credentialsId: 'git', url: 'https://bitbucket.org/pcoelho_1050049/ctesp2022-final-gg'
+    					}
+    				}
+    		stage("Unit Test") {
+                steps {
+                    sh 'dotnet test \"ctesp2022-final-gg.sln\" --logger "trx;LogFileName=UnitTests.trx"'
+                    
+                          }
+                        }
+    		stage('Build + SonarQube Analysis') {
+                steps {
+                    withSonarQubeEnv('sonar') {
+                        sh "\"/root/.dotnet/tools/dotnet-sonarscanner\" begin /k:projectkey"
+                        sh "dotnet build \"ctesp2022-final-gg.sln\""
+                        sh "\"/root/.dotnet/tools/dotnet-sonarscanner\" end"
+                    }
+                }
+            }
+            
+            stage("Quality Gate") {
+                    steps {
+                        sleep(10)
+                        timeout(time: 3, unit: 'MINUTES') {
+                        // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                        // true = set pipeline to UNSTABLE, false = don't
+                        waitForQualityGate abortPipeline: true
+                        }
+                    }
+                }
+	}
+}

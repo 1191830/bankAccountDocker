@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using ctesp2022_final_gg.Database;
+using ctesp2022_final_gg.ModelView;
+using ctesp2022_final_gg.Domain;
+using ctesp2022_final_gg.BLL;
 
 namespace ctesp2022_final_gg.Controllers
 {
@@ -28,55 +29,112 @@ namespace ctesp2022_final_gg.Controllers
         }
 
         /// <summary>
-        /// GET ContaBancaria return   in the buildings list
-        /// </summary>
-        /// <returns>All the ContaBancaria in the ContaBancaria list</returns>
-        [HttpGet]
-        public IEnumerable<ContaBancaria> Get()
-        {
-            List<ContaBancaria> result = db.ContaBancaria.ToList();
-            return result;
-
-        }
-
-        /// <summary>
         /// GET ContaBancaria by ID return ContaBancaria with ID given
         /// </summary>
         /// <returns>A ContaBancaria with given Id</returns>
         [HttpGet("{Id}")]
-        public ContaBancaria Get(int Id)
+        public DadosConta Get(int Id)
         {
             var result = db.ContaBancaria.Where(x => x.ContaBancariaId == Id).FirstOrDefault();
-            return result;
+
+            if (result == null) {
+                return null;
+            }
+
+            var novoId = result.ClienteId;
+
+            var novoResult = db.Cliente.Where(y => y.ClienteId == novoId).FirstOrDefault();
+
+            DadosConta novosDados = new DadosConta();
+            novosDados.DadosSaldo = result.SaldoCorrente;
+            novosDados.DadosNomeTitular = novoResult.NomeCliente;
+            novosDados.DadosMorada = novoResult.Morada;
+            novosDados.DadosContactoTitular = novoResult.Contacto;
+
+            return novosDados;
+           
         }
 
         /// <summary>
-        /// CREATE building creates a new ContaBancaria assigning new ID and adding to the ContaBancaria list
+        /// POST Create a new Transaction
         /// </summary>
         [HttpPost]
-        public IActionResult Create(ContaBancaria contaBancaria)
+        public IActionResult Create(PostTransacao novaTransacao)
         {
-            db.ContaBancaria.Add(contaBancaria);
+            int Id = novaTransacao.IdDaConta;
+
+            var result = db.ContaBancaria.Where(x => x.ContaBancariaId == Id).FirstOrDefault();
+
+            if (result == null )
+            {
+                return null;
+            }
+
+            Transacao trans = new Transacao();
+
+            trans.Dia = DateTime.Now;
+            trans.Valor = novaTransacao.ValorDaTransacao;
+            trans.ContaBancariaId = novaTransacao.IdDaConta;
+            if (novaTransacao.ValorDaTransacao < 0)
+            {
+                trans.TipoTransacaoId = 1;
+            }
+            else
+            {
+
+                trans.TipoTransacaoId = 2;
+            }
+            db.Transacao.Add(trans);
             db.SaveChanges();
-            // Vai gravar a conta e retornar um resultado
-            return CreatedAtAction(nameof(Create), new { id = contaBancaria.ContaBancariaId }, contaBancaria);
 
+            result.SaldoCorrente += novaTransacao.ValorDaTransacao;
+            db.ContaBancaria.Update(result);
+            db.SaveChanges();
+
+
+            // Vai gravar a transacao e update do saldo e retornar um resultado
+            return Content("success");
         }
-
 
         /// <summary>
         /// GET ContaBancaria/Transacao by ID return ContaBancaria with ID given
         /// </summary>
         /// <returns>A ContaBancaria with given Id</returns>
         [HttpGet("{Id}/Transacao")]
-        public IEnumerable<ContaBancaria> GetTransacao(int Id)
+        public ExtratoBancario GetTransacao(int Id)
         {
-            //   var result = db.ContaBancaria.Where(x => x.ContaId == Id).FirstOrDefault();
-            return new List<ContaBancaria>(); 
-            // return result;
+            // contabancaria pelo Id
+            var contaBancaria = db.ContaBancaria.Where(x => x.ContaBancariaId == Id).FirstOrDefault();
+
+            //Caso a conta não existe
+            if (contaBancaria == null)
+            {
+                return null;
+            }
+
+            //Data a 30 dias atrás as 00:00
+            DateTime LocalTimeFinal = DateTime.Now.Date.Subtract(TimeSpan.FromDays(30));
+
+            //Buscar as ultimos 30 dias de transações desta conta 
+            List<Transacao> transacoes = db.Transacao.Where(x => x.ContaBancariaId == Id && x.Dia <= DateTime.Now && x.Dia >= LocalTimeFinal).OrderBy(x =>x.Dia).ToList();
+
+            //adicionar as Transações a conta bancária
+            contaBancaria.Transacoes = transacoes;
+
+
+            //inializar extrato bancário
+            ExtratoBancario extracto = new ExtratoBancario();
+
+            extracto = ExtratoBancarioBLL.extratoFinal(contaBancaria);
+
+            //Caso a conta não tenha transacoes
+            if (extracto == null)
+            {
+                return null;
+            }
+
+            return extracto;
         }
-
-
 
     }
 }
