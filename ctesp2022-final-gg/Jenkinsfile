@@ -3,7 +3,7 @@ pipeline {
     	stages {
     		stage('Checkout'){
     			steps{
-    			    git credentialsId: 'git', url: 'https://bitbucket.org/pcoelho_1050049/ctesp2022-final-gg'
+    			    git branch: 'feature/#012-newproject', credentialsId: 'git', url: 'https://bitbucket.org/pcoelho_1050049/ctesp2022-final-gg'
     					}
     				}
     		stage("Unit Test") {
@@ -30,6 +30,17 @@ pipeline {
                         // true = set pipeline to UNSTABLE, false = don't
                         waitForQualityGate abortPipeline: true
                         }
+                    }
+                }
+                
+            stage("build") {
+                    steps {
+                        sh "docker-compose -f ctesp2022-final-gg/Docker/PROD/docker-compose.yaml build"
+                    }
+                }
+            stage("deploy") {
+                    steps {
+                        sh "docker-compose -f ctesp2022-final-gg/Docker/PROD/docker-compose.yaml up -d"
                     }
                 }
 	}
