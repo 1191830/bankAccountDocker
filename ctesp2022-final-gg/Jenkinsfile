@@ -3,7 +3,7 @@ pipeline {
     	stages {
     		stage('Checkout'){
     			steps{
-    			    git branch: 'feature/#012-newproject', credentialsId: 'git', url: 'https://bitbucket.org/pcoelho_1050049/ctesp2022-final-gg'
+    			    git credentialsId: 'git', url: 'https://bitbucket.org/pcoelho_1050049/ctesp2022-final-gg'
     					}
     				}
     		stage("Unit Test") {
