@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 as webapig
 WORKDIR /app
 
 # Copy files from your host to your current working directory
-COPY ctesp2022-final-gg/ctesp2022-final-gg.csproj ./
+COPY *.csproj ./
 
 COPY . ./
 
@@ -21,4 +21,5 @@ WORKDIR /app
 
 COPY --from=webapig /app/out ./
 
+EXPOSE 8050
 ENTRYPOINT [ "dotnet", "ctesp2022-final-gg.dll" ]
